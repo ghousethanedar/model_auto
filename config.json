@@ -1,0 +1,47 @@
+{
+  "name": "ghouse_thanedar",
+  "model_file": "first_test_model.pkl",
+  "folder": "outputs",
+
+  "workspace": {
+    "subscription_id":"5e407f17-7449-4157-ba6b-5ab55f80b5b2",
+    "resource_group" : "myresourcegroup05",
+    "region" : "eastus2",
+    "workspace_name" :"myworkspace05"
+
+
+  },
+  "compute":{
+    "cpu_cluster_name" : "aml-compute01",
+    "vmsize" :"STANDARD_D2_V2",
+    "max_nodes" :1,
+    "min_nodes":1
+  },
+  "model_register": {
+    "model_name" : "soloinsulin01",
+    "score" :"80%",
+    "type_a" : "classification",
+    "model_description" :"This model was trained using Logistic regression."
+
+  },
+  "dependencies": {
+    "filename": "mydeployenv.yml"
+  },
+
+  "deploy_image": {
+    "runtime" : "python",
+    "driver_file" : "score.py",
+    "conda_file" : "mydeployenv.yml",
+    "servicename":"soloinstance08",
+    "cpu_cores": 1,
+    "memory_gb": 1,
+    "tags":{"diabatics random": "version1"},
+    "description":"using random forest model to predict solo insulin or not."
+
+  },
+  "test_data": [72303084, 7, "Emergency", "ToHome", "EmergencyRoom", 1,
+                220978068, "Caucasian", "Female", "[70-80)", 63, 0, 10, 0, 0, 0,
+                "Ch", "NO", 1, 0]
+
+
+}
